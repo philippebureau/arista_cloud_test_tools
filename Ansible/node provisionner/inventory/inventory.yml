@@ -1,0 +1,17 @@
+---
+hosts:
+  children:
+    github_runners:
+      hosts:
+        ansible:
+          ansible_host: 10.18.172.120
+    ubuntu:
+      hosts:
+        dc1-host1:
+          ansible_host: 10.18.172.119
+        dc1-host2:
+          ansible_host: 10.18.172.114
+        dc2-host1:
+          ansible_host: 10.18.172.117
+        dc2-host2:
+          ansible_host: 10.18.172.115
