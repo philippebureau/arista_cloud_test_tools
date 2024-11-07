@@ -4,7 +4,7 @@ hosts:
     github_runners:
       hosts:
         ansible:
-          ansible_host: 10.18.173.164
+          ansible_host: 10.18.134.32
     ubuntu:
       hosts:
         dc1-host1:
