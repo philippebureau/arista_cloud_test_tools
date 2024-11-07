@@ -2,6 +2,8 @@
 
 > node: only Ubuntu was tested 
 
+## Requirements: 
+- ansible-github_actions_runner role [here](https://github.com/MonolithProjects/ansible-github_actions_runner)
 
 ### instructions
 1- Update the inventory to match your node type in ACT
@@ -13,4 +15,4 @@
 
 4- Run the playbook.
     
-    ansible-playbook playbooks/Lab_hosts_config.yml
+    ansible-playbook playbooks/Lab_hosts_config.yml -i inventory/inventory.yml

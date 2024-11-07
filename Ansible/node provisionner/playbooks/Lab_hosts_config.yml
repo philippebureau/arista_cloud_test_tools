@@ -73,7 +73,7 @@
         cmd: "sudo usermod -a -G docker cvpadmin && sudo usermod -a -G docker avd"
 
 - name: Setup ansible node
-  hosts: ansible_node
+  hosts: github_runners
   become: true
   tags: [runner]
   gather_facts: true
