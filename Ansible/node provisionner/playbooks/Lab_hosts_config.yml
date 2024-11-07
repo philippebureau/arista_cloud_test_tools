@@ -5,7 +5,7 @@
 - name: Setup ansible node
   hosts: github_runners
   become: true
-  tags: [ansible]
+  tags: [runner]
   gather_facts: true
   vars:
     created_username: avd
@@ -72,26 +72,18 @@
       shell:
         cmd: "sudo usermod -a -G docker cvpadmin && sudo usermod -a -G docker avd"
 
-- name: Setup ansible node
+- name: Setup github runner service
   hosts: github_runners
   become: true
   tags: [runner]
   gather_facts: true
   vars:
-    created_username: avd
-    ansible_user: 'cvpadmin'
-    ansible_password: 'arista123'
-    become_user: cvpadmin
-    ansible_sudo_pass: arista123
+    become_user: "{{ ansible_user }}"
     ansible_become: yes
+    ansible_become_pass: "{{ ansible_sudo_pass }}"
     validation_mode_loose: true
     ansible_httpapi_use_ssl: true
     ansible_httpapi_validate_certs: false
-    # for local repo
-    # github_account: philippebureau
-    # github_repo: Arista_AVD_extensions
-    github_account: arista-netdevops-community
-    github_repo: AVD-CI-Demo
   roles:
     - role: ansible-github_actions_runner
       notify: reboot_node
@@ -106,8 +98,6 @@
   become: true
   tags: [hosts]
   vars:
-    ansible_user: 'cvpadmin'
-    ansible_password: 'arista123'
     ansible_become: yes
     validation_mode_loose: true
     ansible_httpapi_use_ssl: true
